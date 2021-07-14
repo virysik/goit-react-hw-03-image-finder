@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { createPortal } from "react-dom";
+import { GrClose } from "react-icons/gr";
 import Spinner from "../Spinner";
 import PropTypes from "prop-types";
 import s from "./Modal.module.css";
@@ -8,7 +9,7 @@ const modalRoot = document.querySelector("#modal-root");
 
 class Modal extends Component {
   static propTypes = {
-    photo: PropTypes.objectOf(PropTypes.string).isRequired,
+    photo: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
     onClose: PropTypes.func.isRequired,
   };
 
@@ -45,12 +46,12 @@ class Modal extends Component {
     const { loaded } = this.state;
 
     return createPortal(
-      <div className={s.Overlay} onClick={this.handleOverlayClick}>
-        <div className={s.Modal}>
+      <div className={s.overlay} onClick={this.handleOverlayClick}>
+        <div className={s.modal}>
           <img src={photo.src} alt={photo.alt} onLoad={this.handleImgLoaded} />
           {loaded ? (
-            <button type="button" onClick={onClose}>
-              x
+            <button type="button" className={s.btn} onClick={onClose}>
+              <GrClose size="24" />
             </button>
           ) : (
             <Spinner />

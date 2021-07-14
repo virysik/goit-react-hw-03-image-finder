@@ -28,14 +28,14 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <header className={s.Searchbar}>
-        <form className={s.SearchForm} onSubmit={this.handleFormSublit}>
-          <button type="submit" className={s.SearchFormButton}>
-            <span className={s.SearchFormButtonLabel}>Search</span>
+      <header className={s.searchbar}>
+        <form className={s.searchForm} onSubmit={this.handleFormSublit}>
+          <button type="submit" className={s.searchFormButton}>
+            <span className={s.searchFormButtonLabel}>Search</span>
           </button>
 
           <input
-            className={s.SearchFormInput}
+            className={s.searchFormInput}
             type="text"
             onChange={this.handleInputChange}
             value={this.state.value}

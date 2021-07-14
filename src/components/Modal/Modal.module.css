@@ -1,4 +1,4 @@
-.Overlay {
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,32 @@
   z-index: 1200;
 }
 
-.Modal {
+.modal {
+  position: relative;
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
+}
+
+.btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  display: flex;
+  align-items: center;
+  padding: 8px;
+
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #c9356c;
+  background-color: #f48db4;
+  transition: transform 250ms ease-in-out, color 250ms ease-in-out,
+    background-color 250ms ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  color: #f48db4;
+  background-color: #c9356c;
 }

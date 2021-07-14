@@ -3,7 +3,7 @@ import s from "./Button.module.css";
 
 function Button({ onClick }) {
   return (
-    <button type="button" className={s.Button} onClick={onClick}>
+    <button type="button" className={s.button} onClick={onClick}>
       Load more
     </button>
   );

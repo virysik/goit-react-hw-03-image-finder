@@ -1,4 +1,5 @@
 @import-normalize;
+
 html {
   box-sizing: border-box;
   width: 100vw;
@@ -19,10 +20,6 @@ body {
   background-color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body.modal-open {
-  overflow: hidden;
 }
 
 img {

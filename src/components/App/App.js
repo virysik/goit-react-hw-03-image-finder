@@ -29,7 +29,7 @@ class App extends Component {
         const photos = await fetchPhotos(query, page);
 
         if (!photos.length) {
-          throw new Error();
+          toast("⚠️Please enter the correct search query name");
         }
 
         this.setState((prevState) => ({
@@ -38,7 +38,7 @@ class App extends Component {
         }));
       } catch (error) {
         this.setState({ reqStatus: "rejected" });
-        toast("⚠️Please enter the correct search query name");
+        console.log(error);
       }
 
       page > 1 &&
@@ -76,12 +76,10 @@ class App extends Component {
 
   onSelectImg = (src, alt) => {
     this.setState({ selectedImg: { src, alt } });
-    document.body.classList.add("modal-open");
   };
 
   onModalClose = () => {
     this.setState({ selectedImg: null });
-    document.body.classList.remove("modal-open");
   };
 
   render() {
@@ -89,7 +87,7 @@ class App extends Component {
 
     if (reqStatus === "idle" || reqStatus === "rejected") {
       return (
-        <div className={s.App}>
+        <div className={s.app}>
           <Searchbar onSubmit={this.handleSubmit} />
           <ToastContainer autoClose={2000} transition={Zoom} />
         </div>
@@ -98,7 +96,7 @@ class App extends Component {
 
     if (reqStatus === "pending") {
       return (
-        <div className={s.App}>
+        <div className={s.app}>
           <Searchbar onSubmit={this.handleSubmit} />
           <ImageGallery photos={photos} onSelectImg={this.onSelectImg} />
           <Spinner />
@@ -110,7 +108,7 @@ class App extends Component {
 
     if (reqStatus === "resolved") {
       return (
-        <div className={s.App}>
+        <div className={s.app}>
           <Searchbar onSubmit={this.handleSubmit} />
           <ImageGallery photos={photos} onSelectImg={this.onSelectImg} />
           {photos.length > 0 && <Button onClick={this.onLoadMore} />}
@@ -122,13 +120,6 @@ class App extends Component {
         </div>
       );
     }
-
-    return (
-      <div className={s.App}>
-        <Searchbar onSubmit={this.handleSubmit} />
-        <ToastContainer autoClose={2000} transition={Zoom} />
-      </div>
-    );
   }
 }
 

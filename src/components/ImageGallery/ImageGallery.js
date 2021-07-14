@@ -4,7 +4,7 @@ import s from "./ImageGallery.module.css";
 
 function ImageGallery({ photos, onSelectImg }) {
   return (
-    <ul className={s.ImageGallery}>
+    <ul className={s.imageGallery}>
       {photos.map((photo) => {
         const { id, webformatURL, largeImageURL, tags } = photo;
         return (
